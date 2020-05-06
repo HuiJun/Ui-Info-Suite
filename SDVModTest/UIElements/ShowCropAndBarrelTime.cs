@@ -44,7 +44,7 @@ namespace UIInfoSuite.UIElements
         /// <param name="e">The event arguments.</param>
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
-            if (!e.IsMultipleOf(4))
+            if (!e.IsMultipleOf(4) || !Tools.IsCursorDisplayed())
                 return;
 
             // get tile under cursor
@@ -90,6 +90,9 @@ namespace UIInfoSuite.UIElements
         /// <param name="e">The event arguments.</param>
         private void OnRenderingHud(object sender, RenderingHudEventArgs e)
         {
+            if (!Tools.IsCursorDisplayed())
+                return;
+
             // draw hover tooltip
             if (_currentTileBuilding != null)
             {

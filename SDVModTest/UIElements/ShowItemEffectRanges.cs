@@ -67,7 +67,7 @@ namespace UIInfoSuite.UIElements
         /// <param name="e">The event arguments.</param>
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
-            if (!e.IsMultipleOf(4))
+            if (!e.IsMultipleOf(4) || !Tools.IsCursorDisplayed())
                 return;
 
             if (_mutex.WaitOne())
@@ -196,6 +196,9 @@ namespace UIInfoSuite.UIElements
         /// <param name="e">The event arguments.</param>
         private void OnRendered(object sender, RenderedEventArgs e)
         {
+            if (!Tools.IsCursorDisplayed())
+                return;
+
             if (_mutex.WaitOne(0))
             {
                 try

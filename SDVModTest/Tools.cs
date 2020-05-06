@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 using StardewValley;
 using StardewValley.Menus;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -123,6 +121,16 @@ namespace UIInfoSuite
             }
 
             return hoverItem;
+        }
+
+        public static bool IsCursorDisplayed()
+        {
+            return (Game1.displayHUD || Game1.eventUp) &&
+                Game1.currentBillboard == 0 &&
+                Game1.gameMode == 3 &&
+                !Game1.freezeControls &&
+                !Game1.panMode &&
+                Game1.wasMouseVisibleThisFrame;
         }
     }
 }
